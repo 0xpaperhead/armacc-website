@@ -1,7 +1,6 @@
 'use client';
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { 
   PhantomWalletAdapter,
@@ -12,7 +11,6 @@ import {
   CoinbaseWalletAdapter,
   NightlyWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
 import { useMemo } from 'react';
 
 // Default styles that can be overridden by your app
@@ -23,8 +21,12 @@ export function WalletContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const network = WalletAdapterNetwork.Mainnet;
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  // Use a more reliable RPC endpoint
+  const endpoint = useMemo(() => {
+    // Try to use environment variable first, fallback to Helius public endpoint
+    return process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 
+           'https://api.mainnet-beta.solana.com';
+  }, []);
 
   const wallets = useMemo(
     () => [

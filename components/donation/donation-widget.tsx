@@ -43,6 +43,8 @@ export function DonationWidget() {
       setBalance(balanceInLamports / LAMPORTS_PER_SOL);
     } catch (error) {
       console.error('Error loading balance:', error);
+      // Set balance to null to indicate we couldn't load it
+      setBalance(null);
     }
   };
 
