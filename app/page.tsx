@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Zap, Globe, Users, Rocket, Github, Twitter, Linkedin } from "lucide-react"
+import { ArrowRight, Zap, Globe, Users, Rocket, Github, Linkedin, X } from "lucide-react"
 import Image from "next/image"
+import { DonationWidget } from "@/components/donation/donation-widget"
 
 export default function ArmenianAcceleratorLanding() {
   return (
@@ -197,6 +198,23 @@ export default function ArmenianAcceleratorLanding() {
         </div>
       </section>
 
+      {/* Donation Section */}
+      <section className="py-24 bg-gray-900/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Support the Movement
+            </h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Help fund the Armenian Accelerationism movement. Your SOL donations directly support our mission to transform Armenia into a global tech hub.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <DonationWidget />
+          </div>
+        </div>
+      </section>
+
       {/* Community Section */}
       <section id="community" className="py-24">
         <div className="container mx-auto px-4">
@@ -214,7 +232,7 @@ export default function ArmenianAcceleratorLanding() {
                 size="lg"
                 className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600"
               >
-                <Twitter className="mr-2 h-5 w-5" />
+                <X className="mr-2 h-5 w-5" />
                 Follow on X
               </Button>
               <Button
