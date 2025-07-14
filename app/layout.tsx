@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://armacc.org',
+    url: 'https://acceleratearmenia.com',
     title: 'Armenian Accelerationism | arm/acc',
     description: 'A decentralized movement accelerating Armenia\'s transformation into a global technology hub. Radically optimistic. Delusionally ambitious. Relentlessly building.',
     siteName: 'Armenian Accelerationism',
