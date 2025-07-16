@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { WalletContextProvider } from '@/components/donation/wallet-context'
 import { EVMWalletProvider } from '@/components/donation/evm-wallet-context'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: 'Armenian Accelerationism | arm/acc',
@@ -49,11 +50,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="dark">
+      <body className="dark">
         <WalletContextProvider>
           <EVMWalletProvider>
             {children}
+            <Toaster />
           </EVMWalletProvider>
         </WalletContextProvider>
       </body>

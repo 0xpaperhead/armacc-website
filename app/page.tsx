@@ -1,13 +1,39 @@
+'use client';
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Zap, Globe, Users, Rocket, Github, Linkedin, X } from "lucide-react"
+import { ArrowRight, Zap, Globe, Users, Rocket } from "lucide-react"
 //react icons
-import { FaDiscord } from "react-icons/fa";
+import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
+
 import Image from "next/image"
 import { MultiChainDonation } from "@/components/donation/multi-chain-donation"
+import { useToast } from "@/hooks/use-toast"
 
 export default function ArmenianAcceleratorLanding() {
+  const { toast } = useToast();
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast({
+        title: "Copied to clipboard!",
+        description: `"${text}" has been copied to your clipboard.`,
+        duration: 3000,
+      });
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+      toast({
+        title: "Copy failed",
+        description: "Unable to copy to clipboard. Please try again.",
+        variant: "destructive",
+        duration: 3000,
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
@@ -29,12 +55,14 @@ export default function ArmenianAcceleratorLanding() {
             <a href="#community" className="hover:text-blue-400 transition-colors">
               Community
             </a>
-            <Button
-              variant="outline"
-              className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white bg-transparent"
-            >
-              Join Movement
-            </Button>
+            <a href="#community">
+              <Button
+                variant="outline"
+                className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white bg-transparent"
+              >
+                Join Movement
+              </Button>
+            </a>
           </div>
         </div>
       </nav>
@@ -66,7 +94,7 @@ export default function ArmenianAcceleratorLanding() {
                   size="lg"
                   className="bg-gradient-to-r from-red-500 via-blue-500 to-orange-500 hover:from-red-600 hover:via-blue-600 hover:to-orange-600 text-white border-0"
                 >
-                  <FaDiscord className="mr-2 h-5 w-5" />
+                  <Rocket className="mr-2 h-5 w-5" />
                   Join the Movement
                 </Button>
               </a>
@@ -74,7 +102,7 @@ export default function ArmenianAcceleratorLanding() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent"
+                  className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent hover:text-white"
                 >
                   Read Manifesto
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -94,7 +122,9 @@ export default function ArmenianAcceleratorLanding() {
               <div className="text-gray-400">Potential</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-red-400 mb-2">🇦🇲</div>
+              <div className="flex justify-center mb-2">
+                <Image src="/flag-am.png" alt="Armenian Flag" width={48} height={36} className="rounded" />
+              </div>
               <div className="text-gray-400">One Armenia</div>
             </div>
             <div>
@@ -176,7 +206,10 @@ export default function ArmenianAcceleratorLanding() {
 
             <div className="space-y-8">
               <div className="text-left p-8 rounded-lg bg-gradient-to-r from-red-900/20 to-transparent border border-red-800/30">
-                <h3 className="text-2xl font-bold mb-4 text-red-400">🇦🇲 Secure Armenia's Future</h3>
+                <h3 className="text-2xl font-bold mb-4 text-red-400 flex items-center gap-2">
+                  <Image src="/flag-am.png" alt="Armenian Flag" width={24} height={18} className="rounded" />
+                  Secure Armenia's Future
+                </h3>
                 <p className="text-gray-300 text-lg">
                   Strengthen Armenia's sovereignty and independence while establishing it as a globally recognized innovation hub that attracts talent, investment, and opportunities.
                 </p>
@@ -226,41 +259,67 @@ export default function ArmenianAcceleratorLanding() {
             </h2>
 
             <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-              Show your affiliation by adding arm/acc or 🇦🇲/acc to your social media. Spread the word. Build the future.
+              Show your affiliation by adding arm/acc or <span className="inline-flex items-center gap-1"><Image src="/flag-am.png" alt="Armenian Flag" width={16} height={12} className="rounded" />/acc</span> to your social media. Spread the word. Build the future.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600"
+                variant="outline"
+                className="border-gray-700 text-white hover:bg-gray-900 bg-transparent hover:text-white"
+                onClick={() => window.open("https://x.com/armenian_acc", "_blank")}
               >
-                <X className="mr-2 h-5 w-5" />
+                <RiTwitterXFill className="mr-2 h-5 w-5" />
                 Follow on X
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white bg-transparent"
+                onClick={() => window.open("https://www.linkedin.com/company/arm-acc/", "_blank")}
               >
-                <Linkedin className="mr-2 h-5 w-5" />
+                <FaLinkedin className="mr-2 h-5 w-5" />
                 Connect on LinkedIn
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent"
+                className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent hover:text-white"
+                onClick={() => window.open("https://github.com/0xpaperhead/armacc-website", "_blank")}
               >
-                <Github className="mr-2 h-5 w-5" />
+                <FaGithub className="mr-2 h-5 w-5" />
                 Contribute
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-indigo-600 text-indigo-400 hover:bg-indigo-700 hover:text-white bg-transparent"
+                onClick={() => window.open("https://discord.acceleratearmenia.com/", "_blank")}
+              >
+                <FaDiscord className="mr-2 h-5 w-5" />
+                Join on Discord
               </Button>
             </div>
 
             <div className="text-center">
-              <p className="text-gray-400 mb-4">Add to your bio:</p>
+              <p className="text-gray-400 mb-4">Add to your bio (click to copy):</p>
               <div className="inline-flex items-center space-x-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800">
-                <code className="text-blue-400">arm/acc</code>
+                <code 
+                  className="text-blue-400 cursor-pointer hover:text-blue-300 transition-colors px-2 py-1 rounded hover:bg-gray-800/50" 
+                  onClick={() => copyToClipboard("arm/acc")}
+                  title="Click to copy"
+                >
+                  arm/acc
+                </code>
                 <span className="text-gray-500">or</span>
-                <code className="text-orange-400">🇦🇲/acc</code>
+                <code 
+                  className="text-orange-400 cursor-pointer hover:text-orange-300 transition-colors px-2 py-1 rounded hover:bg-gray-800/50 inline-flex items-center gap-1" 
+                  onClick={() => copyToClipboard("🇦🇲/acc")}
+                  title="Click to copy"
+                >
+                  <Image src="/flag-am.png" alt="🇦🇲" width={16} height={12} className="rounded" />
+                  /acc
+                </code>
               </div>
             </div>
           </div>
@@ -278,8 +337,22 @@ export default function ArmenianAcceleratorLanding() {
               </span>
             </div>
             <div className="text-gray-400 text-center md:text-right">
-              <p>Decentralized. Open. Building the future.</p>
-              <p className="text-sm mt-1">🇦🇲/acc • Radically optimistic since 2024</p>
+              <p>Distributed. Open. Building the future.</p>
+              <p className="text-sm mt-1 flex items-center justify-center md:justify-end gap-1">
+                <Image src="/flag-am.png" alt="Armenian Flag" width={14} height={10} className="rounded" />
+                /acc • Radically optimistic • 2025
+              </p>
+              <p className="text-xs mt-2">
+                Built by{" "}
+                <a
+                  href="https://x.com/0xpaperhead"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  Souren Khetcho
+                </a>
+              </p>
             </div>
           </div>
         </div>
