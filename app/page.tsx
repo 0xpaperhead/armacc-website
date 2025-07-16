@@ -7,6 +7,7 @@ import { ArrowRight, Zap, Globe, Users, Rocket } from "lucide-react"
 //react icons
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
+import { BsSubstack } from "react-icons/bs";
 
 import Image from "next/image"
 import { MultiChainDonation } from "@/components/donation/multi-chain-donation"
@@ -103,6 +104,7 @@ export default function ArmenianAcceleratorLanding() {
                   size="lg"
                   variant="outline"
                   className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent hover:text-white"
+                  onClick={() => window.open("https://acceleratearmenia.substack.com/p/manifesto", "_blank")}
                 >
                   Read Manifesto
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -280,6 +282,15 @@ export default function ArmenianAcceleratorLanding() {
               >
                 <FaLinkedin className="mr-2 h-5 w-5" />
                 Connect on LinkedIn
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white bg-transparent"
+                onClick={() => window.open("https://acceleratearmenia.substack.com/", "_blank")}
+              >
+                <BsSubstack className="mr-2 h-5 w-5" />
+                Read Substack
               </Button>
               <Button
                 size="lg"
