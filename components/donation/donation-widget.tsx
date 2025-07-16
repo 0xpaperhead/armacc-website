@@ -125,9 +125,9 @@ export function DonationWidget() {
   const canDonate = usdAmount > 0 && balance && solAmount <= balance;
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto bg-gray-900/50 border-gray-800 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-center">Support Armenian Accelerationism</CardTitle>
+        <CardTitle className="text-center text-white">Support Armenian Accelerationism</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="flex justify-center">
@@ -137,19 +137,19 @@ export function DonationWidget() {
         {publicKey && (
           <div className="space-y-4">
             <div className="text-center">
-              <p className="text-sm text-muted-foreground">Your Balance</p>
-              <p className="text-lg font-semibold">
+              <p className="text-sm text-gray-400">Your Balance</p>
+              <p className="text-lg font-semibold text-white">
                 {balance !== null ? `${balance.toFixed(4)} SOL` : 'Loading...'}
               </p>
               {balance !== null && solPrice > 0 && (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-gray-400">
                   ≈ ${(balance * solPrice).toFixed(2)} USD
                 </p>
               )}
             </div>
 
             <div className="space-y-3">
-              <Label>Donation Amount (USD)</Label>
+              <Label className="text-gray-300">Donation Amount (USD)</Label>
               
               <div className="grid grid-cols-4 gap-2">
                 {PRESET_AMOUNTS.map((amount) => (
@@ -172,13 +172,13 @@ export function DonationWidget() {
               </div>
 
               <div className="relative">
-                <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                 <Input
                   type="number"
                   placeholder="Custom amount"
                   value={customAmount}
                   onChange={(e) => handleCustomAmountChange(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
                   disabled={isLoading}
                 />
               </div>
@@ -187,16 +187,16 @@ export function DonationWidget() {
             {usdAmount > 0 && (
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">USD Amount:</span>
+                  <span className="text-sm text-gray-400">USD Amount:</span>
                   <Badge variant="secondary">${usdAmount.toFixed(2)}</Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">SOL Amount:</span>
+                  <span className="text-sm text-gray-400">SOL Amount:</span>
                   <Badge variant="secondary">{solAmount.toFixed(6)} SOL</Badge>
                 </div>
                 {solPrice > 0 && (
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">SOL Price:</span>
+                    <span className="text-sm text-gray-400">SOL Price:</span>
                     <Badge variant="outline">${solPrice.toFixed(2)}</Badge>
                   </div>
                 )}
@@ -227,7 +227,7 @@ export function DonationWidget() {
         )}
 
         {!publicKey && (
-          <p className="text-center text-muted-foreground">
+          <p className="text-center text-gray-400">
             Connect your wallet to start donating
           </p>
         )}

@@ -150,9 +150,9 @@ export function EVMDonationWidget() {
   const canDonate = usdAmount > 0 && nativeAmount <= nativeBalance;
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto bg-gray-900/50 border-gray-800 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-center">Support via Ethereum & L2s</CardTitle>
+        <CardTitle className="text-center text-white">Support via Ethereum & L2s</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="flex justify-center">
@@ -161,39 +161,21 @@ export function EVMDonationWidget() {
 
         {isConnected && address && (
           <div className="space-y-4">
-            <div className="space-y-2">
-              <Label>Select Network</Label>
-              <Select 
-                value={chainId.toString()} 
-                onValueChange={(value) => switchChain({ chainId: parseInt(value) })}
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {chains.map((chain) => (
-                    <SelectItem key={chain.id} value={chain.id.toString()}>
-                      {chain.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
 
             <div className="text-center">
-              <p className="text-sm text-muted-foreground">Your Balance</p>
-              <p className="text-lg font-semibold">
+              <p className="text-sm text-gray-400">Your Balance</p>
+              <p className="text-lg font-semibold text-white">
                 {balance ? `${parseFloat(formatEther(balance.value)).toFixed(4)} ${balance.symbol}` : 'Loading...'}
               </p>
               {balance && getCurrentChainPrice() > 0 && (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-gray-400">
                   ≈ ${(nativeBalance * getCurrentChainPrice()).toFixed(2)} USD
                 </p>
               )}
             </div>
 
             <div className="space-y-3">
-              <Label>Donation Amount (USD)</Label>
+              <Label className="text-gray-300">Donation Amount (USD)</Label>
               
               <div className="grid grid-cols-4 gap-2">
                 {PRESET_AMOUNTS.map((amount) => (
@@ -216,13 +198,13 @@ export function EVMDonationWidget() {
               </div>
 
               <div className="relative">
-                <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                 <Input
                   type="number"
                   placeholder="Custom amount"
                   value={customAmount}
                   onChange={(e) => handleCustomAmountChange(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
                   disabled={isLoadingPrices}
                 />
               </div>
@@ -231,16 +213,16 @@ export function EVMDonationWidget() {
             {usdAmount > 0 && (
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">USD Amount:</span>
+                  <span className="text-sm text-gray-400">USD Amount:</span>
                   <Badge variant="secondary">${usdAmount.toFixed(2)}</Badge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">{balance?.symbol} Amount:</span>
+                  <span className="text-sm text-gray-400">{balance?.symbol} Amount:</span>
                   <Badge variant="secondary">{nativeAmount.toFixed(6)} {balance?.symbol}</Badge>
                 </div>
                 {getCurrentChainPrice() > 0 && (
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">{balance?.symbol} Price:</span>
+                    <span className="text-sm text-gray-400">{balance?.symbol} Price:</span>
                     <Badge variant="outline">${getCurrentChainPrice().toFixed(2)}</Badge>
                   </div>
                 )}
@@ -271,7 +253,7 @@ export function EVMDonationWidget() {
         )}
 
         {!isConnected && (
-          <p className="text-center text-muted-foreground">
+          <p className="text-center text-gray-400">
             Connect your wallet to start donating
           </p>
         )}

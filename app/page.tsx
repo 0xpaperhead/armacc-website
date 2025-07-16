@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Zap, Globe, Users, Rocket, Github, Linkedin, X } from "lucide-react"
+//react icons
+import { FaDiscord } from "react-icons/fa";
 import Image from "next/image"
 import { MultiChainDonation } from "@/components/donation/multi-chain-donation"
 
@@ -45,36 +47,39 @@ export default function ArmenianAcceleratorLanding() {
         <div className="container mx-auto px-4 py-24 relative">
           <div className="max-w-4xl mx-auto text-center">
             <Badge variant="outline" className="mb-6 border-blue-500 text-blue-400">
-              🇦🇲/acc • Armenian Accelerationism
+              Armenian Accelerationism
             </Badge>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-red-400 via-blue-400 to-orange-400 bg-clip-text text-transparent">
-              Build Armenia's
+              Uniting The
               <br />
-              Tech Future
+              Armenian Nation
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              A decentralized movement accelerating Armenia's transformation into a global technology hub. Radically
-              optimistic. Delusionally ambitious. Relentlessly building.
+              A distributed movement to accelerate the development of Armenia into a global tech hub and help Armenians worldwide.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-red-500 via-blue-500 to-orange-500 hover:from-red-600 hover:via-blue-600 hover:to-orange-600 text-white border-0"
-              >
-                <Rocket className="mr-2 h-5 w-5" />
-                Join the Movement
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent"
-              >
-                Read Manifesto
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <a href="#community">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-red-500 via-blue-500 to-orange-500 hover:from-red-600 hover:via-blue-600 hover:to-orange-600 text-white border-0"
+                >
+                  <FaDiscord className="mr-2 h-5 w-5" />
+                  Join the Movement
+                </Button>
+              </a>
+              <a href="#manifesto">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent"
+                >
+                  Read Manifesto
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -109,7 +114,7 @@ export default function ArmenianAcceleratorLanding() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
-              Our Manifesto
+              Our Beliefs
             </h2>
 
             <div className="grid gap-8 md:grid-cols-2">
@@ -138,7 +143,7 @@ export default function ArmenianAcceleratorLanding() {
               <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
                 <CardContent className="p-8">
                   <Globe className="h-12 w-12 text-orange-400 mb-4" />
-                  <h3 className="text-2xl font-bold mb-4 text-white">Global Impact</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-white">Global By Design</h3>
                   <p className="text-gray-300 leading-relaxed">
                     We aim to improve the lives of Armenians worldwide, wherever they are in our vast diaspora. Human
                     capital should be Armenia's most valuable internal asset.
@@ -171,26 +176,23 @@ export default function ArmenianAcceleratorLanding() {
 
             <div className="space-y-8">
               <div className="text-left p-8 rounded-lg bg-gradient-to-r from-red-900/20 to-transparent border border-red-800/30">
-                <h3 className="text-2xl font-bold mb-4 text-red-400">🏗️ Technology Hub</h3>
+                <h3 className="text-2xl font-bold mb-4 text-red-400">🇦🇲 Secure Armenia's Future</h3>
                 <p className="text-gray-300 text-lg">
-                  Accelerate Armenia's transformation into a major technological hub, building on existing efforts and
-                  creating new opportunities for innovation.
+                  Strengthen Armenia's sovereignty and independence while establishing it as a globally recognized innovation hub that attracts talent, investment, and opportunities.
                 </p>
               </div>
 
               <div className="text-left p-8 rounded-lg bg-gradient-to-r from-blue-900/20 to-transparent border border-blue-800/30">
-                <h3 className="text-2xl font-bold mb-4 text-blue-400">📚 Educational Excellence</h3>
+                <h3 className="text-2xl font-bold mb-4 text-blue-400">⚡ Empower Young Armenians</h3>
                 <p className="text-gray-300 text-lg">
-                  Support and accelerate educational advancements, building on initiatives like the Generation AI
-                  project by FAST Foundation.
+                  Give Gen Z Armenians the tools, resources, and confidence to build cool shit, start companies, and become the next generation of Armenian innovators and entrepreneurs.
                 </p>
               </div>
 
               <div className="text-left p-8 rounded-lg bg-gradient-to-r from-orange-900/20 to-transparent border border-orange-800/30">
-                <h3 className="text-2xl font-bold mb-4 text-orange-400">🚀 Startup Ecosystem</h3>
+                <h3 className="text-2xl font-bold mb-4 text-orange-400">🌍 Unite the Armenian Nation</h3>
                 <p className="text-gray-300 text-lg">
-                  Foster the growing Armenian startup scene as the key to dramatically improving the economy and
-                  retaining top talent.
+                  Bridge the diaspora and homeland, creating a unified Armenian identity and community that transcends borders and strengthens our collective impact worldwide.
                 </p>
               </div>
             </div>
@@ -199,7 +201,7 @@ export default function ArmenianAcceleratorLanding() {
       </section>
 
       {/* Donation Section */}
-      <section className="py-24 bg-gray-900/30">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
