@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Zap, Globe, Users, Rocket, Github, Linkedin, X } from "lucide-react"
 import Image from "next/image"
-import { DonationWidget } from "@/components/donation/donation-widget"
+import { MultiChainDonation } from "@/components/donation/multi-chain-donation"
 
 export default function ArmenianAcceleratorLanding() {
   return (
@@ -206,11 +206,11 @@ export default function ArmenianAcceleratorLanding() {
               Support the Movement
             </h2>
             <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-              Help fund the Armenian Accelerationism movement. Your SOL donations directly support our mission to transform Armenia into a global tech hub.
+              Help fund the Armenian Accelerationism movement. Your crypto donations directly support our mission to transform Armenia into a global tech hub.
             </p>
           </div>
           <div className="flex justify-center">
-            <DonationWidget />
+            <MultiChainDonation />
           </div>
         </div>
       </section>

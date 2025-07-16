@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { WalletContextProvider } from '@/components/donation/wallet-context'
+import { EVMWalletProvider } from '@/components/donation/evm-wallet-context'
 
 export const metadata: Metadata = {
   title: 'Armenian Accelerationism | arm/acc',
@@ -51,7 +52,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <WalletContextProvider>
-          {children}
+          <EVMWalletProvider>
+            {children}
+          </EVMWalletProvider>
         </WalletContextProvider>
       </body>
     </html>
